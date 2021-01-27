@@ -11,7 +11,7 @@ jobs:
       run: |
         echo "sk_dev: ${{ secrets.SK_DEV }}"
         echo "sk_pro: ${{ secrets.SK_PRO }}" 
-    - run: cd test
+    - run: ls
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
