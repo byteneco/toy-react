@@ -1,36 +1,21 @@
 name: deploy
 
 # Controls when the action will run. 
-on: 
-  # Triggers the workflow on push or pull request events but only for the develop branch
-  # push:
-  #   branches: [ develop ]
-  # pull_request:
-  #   branches: [ develop ]
+on: [workflow_dispatch]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    inputs:
-      sk_dev:
-        description: 'dev stripe key'
-        required: true
-        default: ''
-      sk_pro:
-        description: 'pro stripe key'
-        required: true
-        default: ''
-      
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    # - name: serverless deploy
-    #   uses: serverless/github-action@master
-    #   with:
-    #     args: deploy
-    #   env:
-    #     SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      with:
+        args: deploy
+      env:
+        SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
     - name: test inputs
       run: |
-        echo "sk_dev: ${{ github.event.inputs.sk_dev }}"
-        echo "sk_pro: ${{ github.event.inputs.sk_pro }}"
+        echo "sk_dev: ${{ secrets.SK_DEV }}"
+        echo "sk_pro: ${{ secrets.SK_PRO }}" 
+    
+
