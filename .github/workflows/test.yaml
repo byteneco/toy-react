@@ -7,15 +7,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: test github secrets
+      run: |
+        echo "sk_dev: ${{ secrets.SK_DEV }}"
+        echo "sk_pro: ${{ secrets.SK_PRO }}" 
+    - run: cd test
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
         args: deploy
       env:
         SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-    - name: test inputs
-      run: |
-        echo "sk_dev: ${{ secrets.SK_DEV }}"
-        echo "sk_pro: ${{ secrets.SK_PRO }}" 
-    
+   
 
