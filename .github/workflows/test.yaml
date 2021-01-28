@@ -7,6 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: test github secrets
       run: |
         echo "sk_dev: ${{ secrets.SK_DEV }}"
@@ -25,3 +26,4 @@ jobs:
         --secret ${{ secrets.AWS_SECRET }}
     - name: Deploy Lambda functions
       run: sls deploy
+      working-directory: ./test
