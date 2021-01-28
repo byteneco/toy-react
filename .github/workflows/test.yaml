@@ -25,5 +25,3 @@ jobs:
         --secret ${{ secrets.AWS_SECRET }}
     - name: Deploy Lambda functions
       run: sls deploy
-      working-directory: ./test
-
