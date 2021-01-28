@@ -24,6 +24,6 @@ jobs:
         --key ${{ secrets.AWS_KEY }} 
         --secret ${{ secrets.AWS_SECRET }}
     - name: Deploy Lambda functions
-      run: sls deploy -s dev
+      run: sls deploy
       working-directory: ./test
 
