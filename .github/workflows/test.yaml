@@ -10,8 +10,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: test github secrets
       run: |
-        echo "sk_dev: ${{ secrets.SK_DEV }}"
-        echo "sk_pro: ${{ secrets.SK_PRO }}" 
+        echo "sk_dev: ${{ secrets.SK_DEV }}" >> test.yml
+        echo "sk_pro: ${{ secrets.SK_PRO }}" >> test.yml
+        cat test.yml
     
     - uses: actions/setup-node@v1
       with:
